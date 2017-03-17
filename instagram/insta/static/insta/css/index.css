@@ -127,14 +127,12 @@ body {
 
 
 }
-
 .timeline{
   width: 900px;
   height: 150%;
   background: rgba(255,255,255,0.2);
-  margin: auto;
   margin-top: 30px;
-  padding-top: 30px;
+  padding-top: 0px;
   border-radius: 5px;
   border: 1px solid rgba(255,255,255,0.4);
   -webkit-box-shadow: 2px 3px 10px rgba(0,0,0,0.2), inset -5px -5px 15px rgba(255,255,255,0.25);
@@ -144,6 +142,7 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 
 
 .match1{
@@ -255,10 +254,10 @@ body {
 
 .in{
   position: :relative;
-  margin-left :400px;
+  margin-left :-400px;
   margin-top: 10px;
   height:400px;
-  width:800px;
+  width:400px;
   background-color: white;
 
 }

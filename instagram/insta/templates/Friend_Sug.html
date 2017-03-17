@@ -45,7 +45,8 @@
     		{% for val in friends %}
     		<div class="match2">
        		<div class="row" > 
-	  			<div class="col-sm-1"><a href="friend_profile/?myid={{ item.id }}&urid={{val.id}}"><img src="{{ val.Profile_pic.url }}" class="pic"/></a></div>
+       			{% if val.Profile_pic %}
+	  			<div class="col-sm-1"><a href="friend_profile/?myid={{ item.id }}&urid={{val.id}}"><img src="{{ val.Profile_pic.url }}" class="pic"/></a></div>{% endif %}
 	  			<div class="col-sm-2" ><a href="friend_profile/?myid={{ item.id }}&urid={{val.id}}"><p class="name">{{val.Name}}</p></a></div> 
 	  			<div class="col-sm-7" class=></div>
 	  			<div class="col-sm-2" class="formm">

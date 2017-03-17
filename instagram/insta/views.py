@@ -128,14 +128,13 @@ def My_post(request):
 	if request.method =="POST":
 		icon = request.POST.get('user_ic')
 		form = TimeLinePostForm(request.POST, request.FILES or None)
-        if form.is_valid():
-			icon = request.POST.get('user_ic')
-			m = registermodl.objects.get(pk = icon)
-			post = request.POST.get('Name')
-			post_pic= request.FILES['post_image']
-			post_obj = timelinemodl(PostNo = m , Post = post, Post_pic = post_pic)
-			post_obj.save()
-        return render(request,'MyProfile.html',{ 'MyProfile':registermodl.objects.filter(id = icon)  })
+       	obj1 = request.session['ses_key']
+      	m = registermodl.objects.get(pk = obj1)
+      	post = request.POST.get('Name')
+      	post_pic = request.FILES['post_image']
+      	post_obj = timelinemodl(PostNo = m , Post = post, Post_pic = post_pic)
+      	post_obj.save()
+     	return render (request , 'MyProfile.html',{'MyProfile':registermodl.objects.filter(id=icon)})
 
 @csrf_exempt
 def friend_request(request):
