@@ -40,18 +40,18 @@ try:
 			password = request.POST.get('pw','')
 			user_id0 = registermodl.objects.filter(UserName = username).filter(Password = password).all()
 			for h in user_id0:
-				user = h.id
-			request.session['ses_key'] = user
+				user_ID = h.id
+			request.session['ses_key'] = user_ID
 			
 			"""user is userID fetched from register model(registermodl)
 			   Now, using that data and filter() I have display friend suggestion to follow on main page
 			   """
-			frnd = friendmodl.objects.filter(User_No = user).filter(Friend_status = True).all()
-			frnd2 = friendmodl.objects.filter(User_No = user).filter(Request_status = True).all()		
+			frnd = friendmodl.objects.filter(User_No = user_ID).filter(Friend_status = True).all()
+			frnd2 = friendmodl.objects.filter(User_No = user_ID).filter(Request_status = True).all()		
 			for i in frnd:
 				lst.append(i.Friend_No)
 				lst3.append(i.Friend_No)
-			lst3.append(user)
+			lst3.append(user_ID)
 			for o in frnd2:
 				lst3.append(o.Friend_No)
 			m =registermodl.objects.filter(~Q(pk__in = lst3))
@@ -78,13 +78,12 @@ except Exception as e:
 def upload_pic(request ):		
     if request.method == 'POST':
         form = ImageUploadForm(request.POST, request.FILES or None)
-        if form.is_valid():
-       		obj1 = request.session['ses_key']
-       		print obj1
-      		m = registermodl.objects.get(pk = obj1)
-       		Profile_pic0 = request.FILES['image']
-       		m.update(Profile_pic = Profile_pic0)
-   		return render_to_response('Main.html',{'user_data':registermodl.objects.filter(id = obj1)})
+       	obj1 = request.session['ses_key']
+      	m = registermodl.objects.get(pk = obj1)
+       	Profile_pic0 = request.FILES['id_image']
+       	m.Profile_pic = Profile_pic0
+       	m.save()
+   	return render_to_response('Main.html',{'user_data':registermodl.objects.filter(id = obj1)})
 
 
 

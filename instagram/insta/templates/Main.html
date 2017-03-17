@@ -53,11 +53,12 @@
 	</div>
 	<div id="profile_pic_right">
 	<h1 id="welcome">Hello , {{ item.Name }}</h1>
+
 	<form action="upload_pic/" method="post" enctype="multipart/form-data">
 	{% csrf_token %}
 	<input type="hidden" name="user_icon" value="{{item.id}}">
-    <p><input id="id_image" type="file" class="" name="image" value="Add Profile Pic"></p>
-    <input type="submit" value="Add Profile Pic" id="btn1"  onclick="window.location.reload()"/>
+    <p><input id="id_image" type="file" class="" name="id_image" value="Add Profile Pic"></p>
+    <input type="submit" value="Add Profile Pic" id="btn1" />
     </form>
     </div>   			
 	</div>
@@ -129,20 +130,7 @@ $("#btn").on('click',function(){
 	return false;
 });
 
-$("#btn1").on('click',function(){
-	$.ajax({
-	        type: 'POST',
-	        url: 'upload_pic/',
-	        data: {
-	          	Image : $('#id_image').val(),
-	           	
-	        },
-	            success: function () {
-               	alert("profile picture uploaded sucessfully");
-            }
-        });
-	return false;
-});
+
 
 
 

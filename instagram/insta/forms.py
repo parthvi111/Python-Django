@@ -4,7 +4,7 @@ from .choices import *
 
 
 class ImageUploadForm(forms.Form):
-    	image = forms.ImageField()
+    	image = forms.FileField()
 
 
 class Edit_form(forms.Form):
