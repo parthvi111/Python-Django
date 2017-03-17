@@ -1,0 +1,47 @@
+{% load staticfiles %}
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{%static 'insta/css/mycss.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+	<div class ="main">
+		<div class="hi">
+		<div class="row">
+			<div class="col-sm-4">
+				<img src="{% static 'insta/img/insta1.png' %}" class="login_insta"></div>
+		</div>
+		</div>
+	
+	<br>
+
+
+		<form method="post" action="login1/">
+		{% csrf_token %}
+				<div class="form-group">
+  							<label for="usr">USERNAME:</label>
+  							<input type="text" class="form-control" id="usr" name ="username" value= "" placeholder ="Enter your username" size=50>
+				</div>
+				<div class="form-group">
+  							<label for="pwd">Password:</label>
+  							<input type="password" class="form-control" id="pwd" name ="password" value= "" placeholder ="Enter your password">
+				</div>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="login" class="btn btn-primary" class="btn0"/>
+
+
+				<input type="hidden" name="next" value="{{ next }}" />
+				
+		</form>
+	</div>
+</body>
+</html>

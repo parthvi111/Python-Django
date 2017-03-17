@@ -1,0 +1,10 @@
+
+<form action="Edit_data/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    {% for item in MyProfile %}
+
+    		<input type="hidden" name="link_user" value="{{item.id}}">
+    {%  endfor   %}
+    		<input type="submit" value="Submit" />
+</form>

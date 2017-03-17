@@ -1,0 +1,235 @@
+.header{
+  
+  margin-top:18px;
+  left:0px;
+}
+.header1{
+  margin-top:28px;
+}
+.mid{
+  position: relative;
+  top:10px;
+  left:0px;
+  height:800px;
+  background-color:#FAFAFA;
+    border-top: solid 1px  #C2C2C2;
+}
+.mid{
+  position: relative;
+  top:10px;
+  left:0px;
+  height:2050px;
+  background-color:#FAFAFA;
+    border-top: solid 1px  #C2C2C2;
+}
+.mid0{
+  position: relative;
+  top:10px;
+  left:0px;
+  height:280px;
+  background-color:#FAFAFA;
+    border-top: solid 1px  #C2C2C2;
+}
+
+.profile_pic{
+  position:relative;
+  top:20px;
+  left :400px;
+  height:100px;
+  width :800px;
+  background-color: white;
+
+}
+.Friends{
+  position:relative;
+  top:100px;
+  left :400px;
+  height:275px;
+  width :800px;
+  background-color: white;
+  border:solid 1px #C2C2C2;
+
+
+}
+.Friends1{
+  position:relative;
+  top:100px;
+  left :400px;
+  height:800px;
+  width :800px;
+  background-color: white;
+  border:solid 1px #C2C2C2;
+
+
+}
+.match1{
+  height:54px;
+  border-bottom: solid 1px #C2C2C2;
+}
+.match{
+  height:75px;
+  border-bottom: solid 1px #C2C2C2;
+
+}
+.match2{
+  height:200px;
+  border-bottom: solid 1px #C2C2C2;
+
+}
+.pic{
+
+  border-radius: 50%;
+  height:40;
+  margin-left:10px;
+  width:40;
+  margin-top:15px;
+
+
+}
+.name{
+  margin-top:28px;
+  font-style: bold;
+  font-weight: 10;
+
+
+}
+.btn1{
+  color:  #0000FF;
+  background-color: Transparent;
+  margin-top:25px;
+  border:solid 0.3px #0000FF;
+  font-size:18px;
+
+}
+.sug{
+  margin-top:20px;
+  margin-left:10px;
+  font-weight: bold;
+  color:#C2C2C2;
+}
+.sug1{
+  margin-top:30px;
+  margin-left:10px;
+  font-weight: bold;
+  color:#0000FF;
+}
+.f_img{
+
+  border-radius:50%;
+  height:200;
+  width:200;
+  margin-top:40px;
+}
+.f_name{
+  font-weight:bold;
+  font-size:25px;
+  margin-top: 50px;
+  margin-right: 20px;
+
+}
+.noti{
+  position:relative;
+  top:30px;
+  border:solid 0.5px grey;
+  height:100px;
+  width:600px;
+  margin:0 auto;
+  background-color: white;
+  margin-top:5px;
+}
+.noti1{
+  font-size: 20px;
+  margin-left:15px;
+  margin-top:100px;
+}
+.POST_img{
+  position: relative;
+  top:10px;
+  left:0px;
+  height:70px;
+  background-color:#FAFAFA;
+    border-top: solid 1px  #C2C2C2;
+    border-bottom: solid 1px  #C2C2C2;
+
+}
+.frm{
+  margin-top:10px;
+  margin-left: 420px;
+}
+.post2{
+  position:relative;
+  top:5px;
+  left:0px;
+  background-color:#FAFAFA;
+
+}
+.post1{
+
+  margin-top: 25px;
+  margin-left: 25px;
+}
+.timeline{
+  position: relative;
+  margin-top:120px;
+  left:0px;
+  background-color:#FAFAFA;
+  height:800px;
+}
+.in{
+  position: :relative;
+  margin-left :400px;
+  margin-top: 10px;
+  height:400px;
+  width:800px;
+  background-color: white;
+
+}
+.part1{
+  position: relative;
+  height :50;
+  border: solid 1px blue;
+}
+.part2{
+  position: relative;
+  height :350;
+
+}
+.main{
+  position: relative;
+  margin:250px auto;
+  height:300px;
+  width:400px;
+  border: solid 5px  #428bca;
+  border-radius:10px;
+
+}
+.login_insta{
+  margin-top:-20px;
+  height:100;
+  width:100;
+  margin-left:150px;
+}
+.hi{
+  position: relative;
+  top:0px;
+  height: 70px;
+  border-bottom:solid 1px #428bca;
+  background-color:#428bca; 
+
+}
+.noti2{
+  position:absolute;
+  margin-top: 1000px;
+  font-size:30px;
+
+}
+.one{
+  position:relative;
+  margin-top: 100px;
+
+}
+.two{
+  position: relative;
+  margin-top: 100px;
+}
+

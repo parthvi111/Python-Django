@@ -1,0 +1,30 @@
+{% load staticfiles %}
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{%static 'insta/css/m.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+
+</head>
+<body>
+<div ng-app="myShoppingList" ng-controller="myCtrl">
+
+<div id="login" class="animated bounce">
+  <h2>login</h2>
+  <form method="post" action="login1/">
+  {% csrf_token %}
+
+    <div class="input">
+      <label for="name" class="entypo-user"></label>
+      <input type="text" name="name" id="name" placeholder="username" required />
+    </div>
+    <div class="input">
+      <label for="name" class="entypo-lock"></label>
+      <input type="password" name="pw" id="pw" placeholder="••••••" required/>
+    </div>
+      <input type="submit" value="Sign In" />
+  </form>  
+</div>
+</div>
+</body>
+</html>

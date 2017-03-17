@@ -1,0 +1,97 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{%static 'insta/css/mycss.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+</head>
+<body>
+
+<div class = "container-fluid">
+	{% for item in MyProfile %}
+
+		<div class="row">
+  			<div class="col-sm-2"></div>  				
+  			<div class="col-sm-2">
+  				<img src= "{% static 'insta/img/insta.png' %}" alt="My image" height=50 width=50 />
+				<img src="{% static 'insta/img/insta1.png' %}" height=70 width=100>
+			</div>
+  			<div class="col-sm-4">
+  				<div class="header1">
+  				<form action="action_page.php">  
+  					<input type="search" name="googlesearch" size=50>
+  					<input type="submit">
+				</form>
+				</div>
+			</div>
+  			<div class="col-sm-2">
+  				<div class="header">
+  					<img src="{% static 'insta/img/heart.jpg' %}" height=50 width=50>
+		    		<a href="MyProfile/?profile={{ item.id }}">MyProfile</a>
+		    	</div>
+			</div>
+			<div class="col-sm-2"></div>  				
+
+		</div>
+
+	<div class="mid0">
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-2">
+					{% if item.Profile_pic %}
+						<img src="{{ item.Profile_pic.url }}" class="f_img"/>
+					{% endif %}
+				</div>
+				<div class="col-sm-5">	
+				<br><br><br>
+				<form  action="Edit_Profile/" method="POST">
+						{% csrf_token %}
+						<input type="hidden" name="user_icon" value="{{item.id}}" id="User_No">		
+						<h class="f_name">{{item.Name}}</h>&nbsp;&nbsp;<input type="submit" class= "btn1" value="Edit Profile" ><br>
+				</form>
+						POSTS&nbsp;&nbsp;FOLLOWER&nbsp;&nbsp;FOLLOWING<br><br>
+						{% if item.Bio %}
+						<p>{{item.Bio}}</p>
+						{% endif %}
+						{% if item.Website %}
+						<p>{{item.Website}}</p>
+						{% endif %}
+					
+				</div>
+				<div class="col-sm-1"></div>
+			</div>	
+	</div>
+
+	<div class="POST_img">
+	<div class="frm">
+		<form action="My_post/" method="post" enctype="multipart/form-data" >
+			{% csrf_token %}
+			<input type="hidden" name="user_ic" value="{{item.id}}">
+			<div class="row">
+			<div class="col-sm-3">
+			<input type="text" name="Name" value="Say Something About This Photo.." size=50 ></div>
+			<div class="col-sm-1"></div>	
+			<div class="col-sm-2"><input id="id_image" type="file" class="" name="post_image" value="Add Profile Pic"></div>
+			<div class="col-sm-3"><input type="submit" value="Add Picture" class="btn1" style="margin-top: 0px" /></div>
+			</div>
+
+    	</form>
+    </div>
+	</div>
+
+
+	<div class="post2">
+		<div >
+		{% for post in item.timelinemodl_set.all %}
+			<img src="{{post.Post_pic.url}}" height =300 width =300 class = "post1">
+		{% endfor %}
+		</div>
+	</div>
+
+		
+
+{% endfor %}
+</div>
+</body>
+</html>

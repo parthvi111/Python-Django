@@ -1,0 +1,157 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{%static 'insta/css/index.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+</head>
+<body>
+<div ng-app="indexPage" ng-controller="myCtrl">
+
+<div class = "container-fluid">
+	{% for item in user_data %}
+		<div id="head">	
+		<div class="row">
+  		<div class="col-sm-2"></div>  				
+  		<div class="col-sm-2">
+  		<div id="logo"><img src="{% static 'insta/img/insta1.png' %}" height=100 width=150></div>
+		</div>
+  		<div class="col-sm-3">
+  		<div id="search">
+  				<form action="action_page.php">  
+  					<input type="search" name="googlesearch" size=50>
+  					<input type="submit">
+				</form>
+				</div>
+			</div>
+  			<div class="col-sm-2">
+  				<div id="notification">
+  					<a href="Notifications/?myid={{ item.id }}"><img src="{% static 'insta/img/heart.jpg' %}" height=50 width=50></a>
+		    		<a href="MyProfile/?profile={{ item.id }}">MyProfile</a>
+		    	</div>
+			</div>
+			<div class="col-sm-2"></div>	
+		</div>
+		</div>
+
+		
+
+
+
+
+
+
+
+<div class="mid">
+	<div id="profile_pic">
+	<div id="profile_pic_left">
+	{% if item.Profile_pic %}
+	<img src="{{ item.Profile_pic.url }}" height=210 width=200/>
+	{% endif %}
+	</div>
+	<div id="profile_pic_right">
+	<h1 id="welcome">Hello , {{ item.Name }}</h1>
+	<form action="upload_pic/" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<input type="hidden" name="user_icon" value="{{item.id}}">
+    <p><input id="id_image" type="file" class="" name="image" value="Add Profile Pic"></p>
+    <input type="submit" value="Add Profile Pic" id="btn1"  onclick="window.location.reload()"/>
+    </form>
+    </div>   			
+	</div>
+
+
+
+
+
+
+
+   	<div class ="Friends">
+    <div class="match1">
+    <div class= "row">
+    <div class="col-sm-6"><p class="sug">SUGGESTIONS FOR YOU</p></div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-2"><a href="Sug_list/?sug={{ item.id }}" class="sug1">See All ></a></div>
+    </div>
+    {% for val in friends %}
+    <div class="match">
+    <div class="row" > 
+  
+		{% if val.Profile_pic%}
+		<div class="col-sm-1"><a href="friend_profile/?myid={{ item.id }}&urid={{val.id}}"><img src="{{ val.Profile_pic.url }}" class="pic"/></a></div>
+	  	{% endif %}
+	  	<div class="col-sm-2" ><a href="friend_profile/?myid={{ item.id }}&urid={{val.id}}"><p class="name">{{val.Name}}</p></a></div> 
+	  	<div class="col-sm-7" ></div>
+
+	  	<form>
+		{% csrf_token %}
+	  	<div class="col-sm-2" >	  				
+		<input type="hidden" name="User_No" value="{{item.id}}" class="U">
+		<input type="hidden" name="Friend" value="{{val.id}}" class="F">
+		<input type="submit" class= "btn1" value="Follow" id="btn" onclick="this.disabled=true;this.value='Requested';window.location.reload()"></div>
+		</form>
+	</div>
+	</div>
+	{% endfor %}
+	</div>
+	</div>
+
+    		
+    <div class="timeline">
+    {% for j in POST_DATA %}    			
+    <div class="in">
+    <div class="part1">{{j.Post}}</div>
+    <div class="part2"><img src= "{{j.Post_pic.url}}" height=350 width =800></div>
+    </div>
+   	{% endfor %}
+    </div>		
+	{% endfor %}
+	</div>
+	</div>
+</body>
+
+
+<script type="text/javascript">
+$("#btn").on('click',function(){
+	$.ajax({
+	        type: 'POST',
+	        url: 'friend_request/',
+	        data: {
+	          	User_No : $('.U').val(),
+	           	Friend :  $('.F').val(),
+	        },
+	            success: function () {
+               	alert("Request Sent Sucessfully");
+            }
+        });
+	return false;
+});
+
+$("#btn1").on('click',function(){
+	$.ajax({
+	        type: 'POST',
+	        url: 'upload_pic/',
+	        data: {
+	          	Image : $('#id_image').val(),
+	           	
+	        },
+	            success: function () {
+               	alert("profile picture uploaded sucessfully");
+            }
+        });
+	return false;
+});
+
+
+
+
+	        
+	       
+		
+	 
+</script>
+
+
+</html>

@@ -1,0 +1,114 @@
+{% load staticfiles %}
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{%static 'insta/css/mycss.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+</head>
+<body>
+<div class = "container-fluid">
+	{% for item in my_data %}
+
+		<div class="row">
+  			<div class="col-sm-2"></div>  				
+  			<div class="col-sm-2">
+  				<img src= "{% static 'insta/img/insta.png' %}" alt="My image" height=50 width=50 />
+				<img src="{% static 'insta/img/insta1.png' %}" height=70 width=100>
+			</div>
+  			<div class="col-sm-4">
+  				<div class="header1">
+  				<form action="action_page.php">  
+  					<input type="search" name="googlesearch" size=50>
+  					<input type="submit">
+				</form>
+				</div>
+			</div>
+  			<div class="col-sm-2">
+  				<div class="header">
+  					<img src="{% static 'insta/img/heart.jpg' %}" height=50 width=50>
+		    		<a href="MyProfile/?profile={{ item.id }}">MyProfile</a>
+		    	</div>
+			</div>
+			<div class="col-sm-2"></div>  				
+
+		</div>
+	<div class="mid">
+	{% for k in req %}
+		<div class="noti">
+			<div class="row">
+				{% if k.Profile_pic %}
+				<div class="col-sm-1"><img src="{{k.Profile_pic.url}}" class="pic"></div>
+				{% endif %}
+				<div class="col-sm-7"><p class="noti2" style="margin-top: 20px;font-size:20px">{{k.Name}} sent you request</p></div>
+				<div class="col-sm-2">
+					<form id="form1">
+						{% csrf_token %}
+
+						<p class="one">
+							<input type ="hidden" name="user" value="{{item.id}}" id="user">
+							<input type ="hidden" name="frnd" value="{{k.id}}" id="frnd">
+							<input type ="hidden" name="accept" value="Accept" id="accept">
+							<input type="submit" value="Accept"  id = "a" style="background-color: blue;color:white" onClick="window.location.reload()">
+						</p>
+					</form>
+				</div>
+				<div class="col-sm-2">
+					<form id="form2">
+						{% csrf_token %}
+
+						<p class="two">
+							<input type ="hidden" name="user" value="{{item.id}}" id="user">
+							<input type ="hidden" name="frnd" value="{{k.id}}" id="frnd">
+							<input type ="hidden" name="Decline" value="Decline" id="Decline">
+							<input type="submit"  value="Decline" id="d" style="background-color: red;color:white" onClick="window.location.reload()">
+						</p>
+					</form>
+				</div>
+			</div>
+	{% endfor %}
+	</div>
+</div>
+{% endfor %}
+
+</body>
+<script type="text/javascript">
+$("#a").on('click',function(){
+
+	        $.ajax({
+	            type: 'POST',
+	            url: 'accept_req/',
+	             data: {
+	            	user : $('#user').val(),
+	            	frnd:  $('#frnd').val(),
+	            	accept : $('#accept').val()
+	            },
+	            success: function () {
+
+	               	alert("You have a New Friend");
+	            }
+	        });
+	       return false;
+		});
+
+
+$("#d").on('click',function(){
+	        $.ajax({
+	            type: 'POST',
+	            url: 'decline_req/',
+	             data: {
+	            	user : $('#user').val(),
+	            	frnd:  $('#frnd').val(),
+	            	Decline : $('#Decline').val()
+	            },
+	            success: function () {
+
+	               	alert("Thank you");
+	            }
+	        });
+	       return false;
+		});
+	 
+</script>
+</html>
